@@ -43,7 +43,7 @@ services:
   mongo-express:
     image: mongo-express
     container_name: mongo_express
-    restart: always
+    restart: unless-stopped
     ports:
       - 8081:8081
     environment:
@@ -51,6 +51,13 @@ services:
       - ME_CONFIG_MONGODB_ADMINPASSWORD=priti
       - ME_CONFIG_MONGODB_SERVER=mongodb
 
+
+  mail-dev:
+    container_name: ms-mail-dev
+    image: maildev/maildev
+    ports:
+      - 1080:1080
+      - 1025:1025
 
 
 networks:
